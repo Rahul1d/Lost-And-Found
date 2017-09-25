@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="com.Trylof.services.service.ItemFoundLocalService" class="com.Trylof.services.service.impl.ItemFoundLocalServiceImpl" />
+	<bean id="com.Trylof.services.service.ItemFoundService" class="com.Trylof.services.service.impl.ItemFoundServiceImpl" />
+	<bean id="com.Trylof.services.service.persistence.ItemFoundPersistence" class="com.Trylof.services.service.persistence.impl.ItemFoundPersistenceImpl" parent="basePersistence" />
+	<bean id="com.Trylof.services.service.ItemLostLocalService" class="com.Trylof.services.service.impl.ItemLostLocalServiceImpl" />
+	<bean id="com.Trylof.services.service.ItemLostService" class="com.Trylof.services.service.impl.ItemLostServiceImpl" />
+	<bean id="com.Trylof.services.service.persistence.ItemLostPersistence" class="com.Trylof.services.service.persistence.impl.ItemLostPersistenceImpl" parent="basePersistence" />
+	<bean id="com.Trylof.services.service.ItemVerificationLocalService" class="com.Trylof.services.service.impl.ItemVerificationLocalServiceImpl" />
+	<bean id="com.Trylof.services.service.ItemVerificationService" class="com.Trylof.services.service.impl.ItemVerificationServiceImpl" />
+	<bean id="com.Trylof.services.service.persistence.ItemVerificationPersistence" class="com.Trylof.services.service.persistence.impl.ItemVerificationPersistenceImpl" parent="basePersistence" />
+	<bean id="com.Trylof.services.service.SearchResLocalService" class="com.Trylof.services.service.impl.SearchResLocalServiceImpl" />
+	<bean id="com.Trylof.services.service.SearchResService" class="com.Trylof.services.service.impl.SearchResServiceImpl" />
+	<bean id="com.Trylof.services.service.persistence.SearchResPersistence" class="com.Trylof.services.service.persistence.impl.SearchResPersistenceImpl" parent="basePersistence" />
+	<bean id="com.Trylof.services.service.UserMasterLocalService" class="com.Trylof.services.service.impl.UserMasterLocalServiceImpl" />
+	<bean id="com.Trylof.services.service.UserMasterService" class="com.Trylof.services.service.impl.UserMasterServiceImpl" />
+	<bean id="com.Trylof.services.service.persistence.UserMasterPersistence" class="com.Trylof.services.service.persistence.impl.UserMasterPersistenceImpl" parent="basePersistence" />
+</beans>

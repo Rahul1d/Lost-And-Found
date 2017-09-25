@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.Trylof.services.model.ItemFound" />
+	<import class="com.Trylof.services.model.ItemLost" />
+	<import class="com.Trylof.services.model.ItemVerification" />
+	<import class="com.Trylof.services.model.SearchRes" />
+	<import class="com.Trylof.services.model.UserMaster" />
+	<class name="com.Trylof.services.model.impl.ItemFoundImpl" table="LofService_ItemFound">
+		<id name="itemFoundId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="FoundDate" type="org.hibernate.type.TimestampType" />
+		<property name="FoundLocation" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundCompany" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundColor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundSize" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="FoundDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostItem" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="mimeType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<one-to-one name="blobDataBlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="com.Trylof.services.model.ItemFoundBlobDataBlobModel" cascade="save-update" outer-join="false" constrained="true" />
+	</class>
+	<class name="com.Trylof.services.model.ItemFoundBlobDataBlobModel" table="LofService_ItemFound" lazy="true">
+		<id name="itemFoundId" column="itemFoundId">
+			<generator class="foreign">
+				<param name="property">com.Trylof.services.model.impl.ItemFoundImpl</param>
+			</generator>
+		</id>
+		<property column="blobData" name="blobDataBlob" type="blob" />
+	</class>
+	<class name="com.Trylof.services.model.impl.ItemLostImpl" table="LofService_ItemLost">
+		<id name="itemLostId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="LostDate" type="org.hibernate.type.TimestampType" />
+		<property name="LostLocation" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostCompany" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostColor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostSize" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LostDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mimeType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<one-to-one name="blobDataBlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="com.Trylof.services.model.ItemLostBlobDataBlobModel" cascade="save-update" outer-join="false" constrained="true" />
+	</class>
+	<class name="com.Trylof.services.model.ItemLostBlobDataBlobModel" table="LofService_ItemLost" lazy="true">
+		<id name="itemLostId" column="itemLostId">
+			<generator class="foreign">
+				<param name="property">com.Trylof.services.model.impl.ItemLostImpl</param>
+			</generator>
+		</id>
+		<property column="blobData" name="blobDataBlob" type="blob" />
+	</class>
+	<class name="com.Trylof.services.model.impl.ItemVerificationImpl" table="LofService_ItemVerification">
+		<id name="itemVerificationId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="VerifyDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<one-to-one name="Image1BlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="com.Trylof.services.model.ItemVerificationImage1BlobModel" cascade="save-update" outer-join="false" constrained="true" />
+		<one-to-one name="Image2BlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="com.Trylof.services.model.ItemVerificationImage2BlobModel" cascade="save-update" outer-join="false" constrained="true" />
+		<property name="LostItemid" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="FoundItemid" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="UserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="VerifyStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.Trylof.services.model.ItemVerificationImage1BlobModel" table="LofService_ItemVerification" lazy="true">
+		<id name="itemVerificationId" column="itemVerificationId">
+			<generator class="foreign">
+				<param name="property">com.Trylof.services.model.impl.ItemVerificationImpl</param>
+			</generator>
+		</id>
+		<property column="Image1" name="Image1Blob" type="blob" />
+	</class>
+	<class name="com.Trylof.services.model.ItemVerificationImage2BlobModel" table="LofService_ItemVerification" lazy="true">
+		<id name="itemVerificationId" column="itemVerificationId">
+			<generator class="foreign">
+				<param name="property">com.Trylof.services.model.impl.ItemVerificationImpl</param>
+			</generator>
+		</id>
+		<property column="Image2" name="Image2Blob" type="blob" />
+	</class>
+	<class name="com.Trylof.services.model.impl.SearchResImpl" table="LofService_SearchRes">
+		<id name="searchResId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="itemid" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="location" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="color" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="size" type="com.liferay.portal.dao.orm.hibernate.StringType" column="size_" />
+		<property name="desc" type="com.liferay.portal.dao.orm.hibernate.StringType" column="desc_" />
+		<property name="count" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="Status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Date" type="org.hibernate.type.TimestampType" />
+		<property name="Company" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.Trylof.services.model.impl.UserMasterImpl" table="LofService_UserMaster">
+		<id name="userMasterId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userEmail" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userPass" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userAddress" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userPhoneno" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="userType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userOrganization" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

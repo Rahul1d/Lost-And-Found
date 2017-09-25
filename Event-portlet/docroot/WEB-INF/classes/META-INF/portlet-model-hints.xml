@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="TEXTAREA">
+		<hint name="max-length">500</hint>
+	</hint-collection>
+	<model name="com.Trylof.services.model.ItemFound">
+		<field name="itemFoundId" type="long" />
+		<field name="userId" type="long" />
+		<field name="FoundDate" type="Date" />
+		<field name="FoundLocation" type="String" />
+		<field name="FoundCompany" type="String" />
+		<field name="FoundColor" type="String" />
+		<field name="FoundSize" type="String" />
+		<field name="FoundType" type="String" />
+		<field name="FoundStatus" type="String" />
+		<field name="FoundDesc" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="LostItem" type="long" />
+		<field name="mimeType" type="String" />
+		<field name="blobData" type="Blob" />
+	</model>
+	<model name="com.Trylof.services.model.ItemLost">
+		<field name="itemLostId" type="long" />
+		<field name="userId" type="long" />
+		<field name="LostDate" type="Date" />
+		<field name="LostLocation" type="String" />
+		<field name="LostCompany" type="String" />
+		<field name="LostColor" type="String" />
+		<field name="LostSize" type="String" />
+		<field name="LostType" type="String" />
+		<field name="LostStatus" type="String" />
+		<field name="LostDesc" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="mimeType" type="String" />
+		<field name="blobData" type="Blob" />
+	</model>
+	<model name="com.Trylof.services.model.ItemVerification">
+		<field name="itemVerificationId" type="long" />
+		<field name="VerifyDesc" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="Image1" type="Blob" />
+		<field name="Image2" type="Blob" />
+		<field name="LostItemid" type="long" />
+		<field name="FoundItemid" type="long" />
+		<field name="UserId" type="long" />
+		<field name="VerifyStatus" type="String" />
+	</model>
+	<model name="com.Trylof.services.model.SearchRes">
+		<field name="searchResId" type="long" />
+		<field name="userId" type="long" />
+		<field name="itemid" type="long" />
+		<field name="location" type="String" />
+		<field name="color" type="String" />
+		<field name="size" type="String" />
+		<field name="desc" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="count" type="int" />
+		<field name="Status" type="String" />
+		<field name="Date" type="Date" />
+		<field name="Company" type="String" />
+	</model>
+	<model name="com.Trylof.services.model.UserMaster">
+		<field name="userMasterId" type="long" />
+		<field name="userName" type="String" />
+		<field name="userEmail" type="String" />
+		<field name="userPass" type="String" />
+		<field name="userAddress" type="String" />
+		<field name="userPhoneno" type="int" />
+		<field name="userType" type="String" />
+		<field name="userOrganization" type="String" />
+	</model>
+</model-hints>

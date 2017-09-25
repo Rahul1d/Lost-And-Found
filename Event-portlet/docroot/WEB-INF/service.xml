@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+<service-builder package-path="com.Trylof.services">
+	<author>Utkarsh</author>
+	<namespace>LofService</namespace>
+	<entity name="UserMaster" local-service="true" cache-enabled="false">
+
+		<!-- PK fields -->
+
+		<column name="userMasterId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+		<column name="userName" type="String"></column>
+        <column name="userEmail" type="String"></column>
+        <column name="userPass" type="String"></column>
+        <column name="userAddress" type="String"></column>
+        <column name="userPhoneno" type="int"></column>
+        <column name="userType" type="String"></column>
+        <column name="userOrganization" type="String"></column>
+        <finder name="userEmail" return-type="Collection">
+            <finder-column name="userEmail"></finder-column>
+            <finder-column name="userPass"></finder-column>
+        </finder>
+	</entity>
+	<entity name="ItemLost" local-service="true"
+		cache-enabled="false">
+
+		<!-- PK fields -->
+
+		<column name="itemLostId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="LostDate" type="Date"></column>
+        <column name="LostLocation" type="String"></column>
+        <column name="LostCompany" type="String"></column>
+        <column name="LostColor" type="String"></column>
+        <column name="LostSize" type="String"></column>
+        <column name="LostType" type="String"></column>
+        <column name="LostStatus" type="String"></column>
+        <column name="LostDesc" type="String"></column>
+        <column name="mimeType" type="String"></column>
+        <column name="blobData" type="Blob"></column>
+        <finder name="itemLostid" return-type="Collection">
+            <finder-column name="itemLostId"></finder-column>
+        </finder>
+        <finder name="itemLostUserid" return-type="Collection">
+            <finder-column name="userId"></finder-column>
+        </finder>
+        <finder name="ItemStatusMatch" return-type="Collection">
+            <finder-column name="LostStatus"></finder-column>
+        </finder>
+        <finder name="ItemStstausAndUser" return-type="Collection">
+            <finder-column name="LostStatus"></finder-column>
+            <finder-column name="userId"></finder-column>
+        </finder>
+	</entity>
+	<entity name="ItemFound" local-service="true"
+		cache-enabled="false">
+
+		<!-- PK fields -->
+
+		<column name="itemFoundId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="FoundDate" type="Date"></column>
+        <column name="FoundLocation" type="String"></column>
+        <column name="FoundCompany" type="String"></column>
+        <column name="FoundColor" type="String"></column>
+        <column name="FoundSize" type="String"></column>
+        <column name="FoundType" type="String"></column>
+        <column name="FoundStatus" type="String"></column>
+        <column name="FoundDesc" type="String"></column>
+        <column name="LostItem" type="long"></column>
+        <column name="mimeType" type="String"></column>
+        <column name="blobData" type="Blob"></column>
+        <finder name="ItemType" return-type="Collection">
+            <finder-column name="FoundType"></finder-column>
+        </finder>
+	</entity>
+	<entity name="SearchRes" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="searchResId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+        <column name="itemid" type="long"></column>
+        <column name="location" type="String"></column>
+        <column name="color" type="String"></column>
+        <column name="size" type="String"></column>
+        <column name="desc" type="String"></column>
+        <column name="count" type="int"></column>
+        <column name="Status" type="String"></column>
+        <column name="Date" type="Date"></column>
+        <column name="Company" type="String"></column>
+        <order by="desc">
+            <order-column name="count" order-by="desc" case-sensitive="false"></order-column>
+        </order>
+	</entity>
+	<entity name="ItemVerification" local-service="true">
+
+
+		<!-- PK fields -->
+
+		<column name="itemVerificationId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+        <column name="VerifyDesc" type="String"></column>
+        <column name="Image1" type="Blob"></column>
+        <column name="Image2" type="Blob"></column>
+        <column name="LostItemid" type="long"></column>
+        <column name="FoundItemid" type="long"></column>
+        <column name="UserId" type="long"></column>
+        <column name="VerifyStatus" type="String"></column>
+        <finder name="LostItemIdMatch" return-type="ItemVerification">
+            <finder-column name="LostItemid"></finder-column>
+        </finder>
+        <finder name="UserMatch" return-type="Collection">
+            <finder-column name="UserId"></finder-column>
+            <finder-column name="VerifyStatus"></finder-column>
+        </finder>
+	</entity>
+</service-builder>
